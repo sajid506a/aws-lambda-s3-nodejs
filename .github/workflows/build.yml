@@ -22,8 +22,8 @@ jobs:
         run: |
           PKGNAME=$(node -e 'console.log(require("./package.json").name)')
           TAG=$(node -e 'console.log(require("./package.json").version)')
-          echo "tag=$PKGNAME_$TAG" >> $GITHUB_OUTPUT
-          echo "Tag Version: $PKGNAME_$TAG" >> $GITHUB_STEP_SUMMARY
+          echo "tag=$PKGNAME$TAG" >> $GITHUB_OUTPUT
+          echo "Tag Version: $PKGNAME$TAG" >> $GITHUB_STEP_SUMMARY
     
       - name: 'Create Zip File'
         id: 'create_package'
