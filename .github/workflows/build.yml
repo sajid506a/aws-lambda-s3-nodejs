@@ -13,10 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
       - name: 'Generate Tag Version'
         id: generate_tag_version
         run: |
-          TAG=lambda_$(date +%Y%m%d)_$(date +%H%M%S)
+          TAG=$(node -e 'console.log(require("./package.json").version)')
           echo "tag=$TAG" >> $GITHUB_OUTPUT
           echo "Tag Version: $TAG" >> $GITHUB_STEP_SUMMARY
     
